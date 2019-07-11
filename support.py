@@ -86,7 +86,7 @@ def report_regressor(plf, x, y, cv=True):
         r2 = []
         ms = []
         n = []
-        for train_index, test_index in kf.split(x)
+        for train_index, test_index in kf.split(x):
             x_train, x_test = x[train_index], x[test_index]
             y_train, y_test = y[train_index], y[test_index]
             plf.fit(x_train, y_train)
