@@ -10,9 +10,9 @@ def clz_to_prob(clz):
     return z, list(map(str, l))
 
 
-def prob_to_clz(prob, cl):
+def prob_to_clz(prob, clz):
     i = prob.argmax(axis=1)
-    return [cl[z] for z in i]
+    return [clz[z] for z in i]
 
 
 def get_base_args():
@@ -37,7 +37,7 @@ def report_classifier(plf, x, y, clz, cv=True):
         print('Model:')
         print(str(plf))
         z = plf.predict(x)
-        z = z.argmax(axix=1)
+        z = z.argmax(axis=1)
         y = y.argmax(axis=1)
         with warnings.catch_warnings():
             warnings.simplefilter('ignore', category=UndefinedMetricWarning)
@@ -65,8 +65,8 @@ def report_classifier(plf, x, y, clz, cv=True):
 
 
 def report_regressor(plf, x, y, cv=True):
-    from sklearn.metrics import  r2_score, explained_variance_score, mean_absolute_error, mean_squared_error
-    from sklearn.model_selection import  KFold
+    from sklearn.metrics import r2_score, explained_variance_score, mean_absolute_error, mean_squared_error
+    from sklearn.model_selection import KFold
     if not cv:
         plf.fit(x, y)
         print('Model:')
